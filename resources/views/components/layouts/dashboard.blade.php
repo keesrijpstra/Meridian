@@ -7,6 +7,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="h-full">
-    {{ $slot }}
+    <main>
+        <x-side-bar />
+
+        {{ $slot }}
+    </main>
 </body>
 </html>

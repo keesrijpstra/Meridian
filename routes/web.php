@@ -1,8 +1,8 @@
 <?php
 
-use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Login;
-use App\Livewire\Dashboard;
+use App\Livewire\Auth\Register;
+use App\Livewire\Dashboard\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,10 +14,7 @@ Route::middleware('guest')->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    Route::get('/home', Dashboard::class)->name('dashboard');
+    Route::get('/', Dashboard::class)->name('dashboard');
 });
 
 
