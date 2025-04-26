@@ -9,10 +9,12 @@
 </head>
 
 <body class="h-full">
-    <div class="flex">
-        <x-side-bar />
+    <x-side-bar />
 
-        <main class="flex-1 lg:pl-72">
+    <div class="lg:pl-72">
+        @livewire('navbar.navbar')
+
+        <main class="px-4 py-6 sm:px-6 lg:px-8">
             {{ $slot }}
         </main>
     </div>
