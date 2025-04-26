@@ -23,7 +23,7 @@
                             <ul role="list" class="-mx-2 space-y-1">
                                 <li>
                                     <a href="{{ route('dashboard') }}"
-                                        class="group flex gap-x-3 rounded-md bg-gray-800 p-2 text-sm/6 font-semibold text-white">
+                                        class="{{ request()->routeIs('dashboard') ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }} group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold">
                                         <svg class="size-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" aria-hidden="true"
                                             data-slot="icon">
@@ -35,7 +35,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('users') }}"
-                                        class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white">
+                                        class="{{ request()->routeIs('users') ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }} group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold">
                                         <svg class="size-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" aria-hidden="true"
                                             data-slot="icon">
@@ -66,7 +66,7 @@
                     <ul role="list" class="-mx-2 space-y-1">
                         <li>
                             <a href="{{ route('dashboard') }}"
-                                class="group flex gap-x-3 rounded-md bg-gray-800 p-2 text-sm/6 font-semibold text-white">
+                                class="{{ request()->routeIs('dashboard') ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }} group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold">
                                 <svg class="size-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" aria-hidden="true" data-slot="icon">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -77,7 +77,7 @@
                         </li>
                         <li>
                             <a href="{{ route('users') }}"
-                                class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:bg-gray-800 hover:text-white">
+                                class="{{ request()->routeIs('users') ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }} group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold">
                                 <svg class="size-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" aria-hidden="true" data-slot="icon">
                                     <path stroke-linecap="round" stroke-linejoin="round"
