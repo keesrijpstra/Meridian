@@ -15,7 +15,7 @@
             class="fixed inset-0 overflow-hidden" style="display: none;">
             <div class="inset-0 overflow-hidden">
                 <div class="fixed inset-y-0 right-0 flex pl-10">
-                    <div class="relative w-screen max-w-md">
+                    <div class="relative">
                         <div class="flex h-full h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                             <div class="px-4 sm:px-6">
                                 <div class="flex items-start justify-between">
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="mt-8 flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -247,88 +247,85 @@
                         x-transition:leave-start="translate-x-0" @click.outside="openEditModal = false"
                         x-transition:leave-end="translate-x-full" class="fixed inset-0 z-50 overflow-hidden"
                         style="display: none;">
-                        <div class="inset-0 overflow-hidden">
-                            <div class="fixed inset-y-0 right-0 flex pl-10">
-                                <div class="relative w-screen max-w-md">
-                                    <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                                        <div class="px-4 sm:px-6">
-                                            <div class="flex items-start justify-between">
-                                                <h2 class="text-lg font-medium text-gray-900">Edit Role</h2>
-                                                <div class="ml-3 flex h-7 items-center">
-                                                    <button x-on:click="openEditModal = false"
-                                                        class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                                        <span class="sr-only">Close panel</span>
-                                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg"
-                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                            aria-hidden="true">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex max-w-full pl-10">
+                            <div class="pointer-events-auto relative w-screen max-w-md">
+                                <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                                    <div class="px-4 sm:px-6">
+                                        <div class="flex items-start justify-between">
+                                            <h2 class="text-lg font-medium text-gray-900">Edit Role</h2>
+                                            <div class="ml-3 flex h-7 items-center">
+                                                <button x-on:click="openEditModal = false"
+                                                    class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                                    <span class="sr-only">Close panel</span>
+                                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                        aria-hidden="true">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="relative mt-6 flex-1 px-4 sm:px-6">
-                                            <div class="flex h-full flex-col justify-between">
-                                                <div class="space-y-6">
+                                    </div>
+                                    <div class="relative mt-6 flex-1 px-4 sm:px-6">
+                                        <div class="flex h-full flex-col justify-between">
+                                            <div class="space-y-6">
+                                                <div>
                                                     <div>
-                                                        <div>
-                                                            <label for="edit-name"
-                                                                class="block text-sm/6 font-medium text-gray-900">Name</label>
-                                                            <div class="mt-2">
-                                                                <input type="text" wire:model="editName"
-                                                                    name="edit-name" id="edit-name"
-                                                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                                                    placeholder="Role name">
-                                                            </div>
+                                                        <label for="edit-name"
+                                                            class="block text-sm/6 font-medium text-gray-900">Name</label>
+                                                        <div class="mt-2">
+                                                            <input type="text" wire:model="editName"
+                                                                name="edit-name" id="edit-name"
+                                                                class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                                                placeholder="Role name">
                                                         </div>
                                                     </div>
-
-                                                    <div x-data="{ editGuardOpen: false }"
-                                                        @click.outside="editGuardOpen = false"
-                                                        class="relative inline-block text-left">
-                                                        <div>
-                                                            <button x-on:click="editGuardOpen = true" type="button"
-                                                                class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                                                                id="edit-menu-button" aria-expanded="true"
-                                                                aria-haspopup="true">
-                                                                {{ $editGuard ?? 'Guard' }}
-                                                                <svg class="-mr-1 size-5 text-gray-400"
-                                                                    viewBox="0 0 20 20" fill="currentColor"
-                                                                    aria-hidden="true" data-slot="icon">
-                                                                    <path fill-rule="evenodd"
-                                                                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                                                                        clip-rule="evenodd" />
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-
-                                                        <div x-show="editGuardOpen"
-                                                            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 hover:cursor-pointer focus:outline-none"
-                                                            role="menu" aria-orientation="vertical"
-                                                            aria-labelledby="edit-menu-button" tabindex="-1">
-                                                            <div class="py-1 hover:bg-gray-300"
-                                                                wire:click="selectEditGuard('web_guard'); editGuardOpen = false">
-                                                                <button class="block px-4 py-2 text-sm text-gray-700"
-                                                                    role="menuitem" tabindex="-1"
-                                                                    id="edit-menu-item-0">web_guard</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                 </div>
-                                                <div class="mt-auto pt-4">
-                                                    <div class="flex justify-end">
-                                                        <button x-on:click="openEditModal = false" type="button"
-                                                            class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                                            Cancel
-                                                        </button>
-                                                        <button type="submit" wire:click="updateRole"
-                                                            x-on:click="openEditModal = false"
-                                                            class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                                            Save
+
+                                                <div x-data="{ editGuardOpen: false }" @click.outside="editGuardOpen = false"
+                                                    class="relative inline-block text-left">
+                                                    <div>
+                                                        <button x-on:click="editGuardOpen = true" type="button"
+                                                            class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                                            id="edit-menu-button" aria-expanded="true"
+                                                            aria-haspopup="true">
+                                                            {{ $editGuard ?? 'Guard' }}
+                                                            <svg class="-mr-1 size-5 text-gray-400"
+                                                                viewBox="0 0 20 20" fill="currentColor"
+                                                                aria-hidden="true" data-slot="icon">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                                                    clip-rule="evenodd" />
+                                                            </svg>
                                                         </button>
                                                     </div>
+
+                                                    <div x-show="editGuardOpen"
+                                                        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 hover:cursor-pointer focus:outline-none"
+                                                        role="menu" aria-orientation="vertical"
+                                                        aria-labelledby="edit-menu-button" tabindex="-1">
+                                                        <div class="py-1 hover:bg-gray-300"
+                                                            wire:click="selectEditGuard('web_guard'); editGuardOpen = false">
+                                                            <button class="block px-4 py-2 text-sm text-gray-700"
+                                                                role="menuitem" tabindex="-1"
+                                                                id="edit-menu-item-0">web_guard</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="mt-auto pt-4">
+                                                <div class="flex justify-end">
+                                                    <button x-on:click="openEditModal = false" type="button"
+                                                        class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" wire:click="updateRole"
+                                                        x-on:click="openEditModal = false"
+                                                        class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                        Save
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
