@@ -104,6 +104,21 @@ class Roles extends Component
         $this->roles = Role::query()->select('*')->get();
     }
 
+        public function deleteRole()
+    {
+        $role = \Spatie\Permission\Models\Role::find($this->editId);
+        
+        if (!$role) {
+            return;
+        }
+        
+        $role->delete();
+        
+        $this->reset(['editId', 'editName', 'editGuard', 'selectedPermissions']);
+        
+        $this->roles = \Spatie\Permission\Models\Role::query()->select('*')->get();
+    }
+
     public function render()
     {
         if (strlen($this->searchTerm) >= 1) {

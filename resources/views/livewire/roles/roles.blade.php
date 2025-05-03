@@ -317,8 +317,13 @@
                                             </div>
                                             <div class="mt-auto pt-4">
                                                 <div class="flex justify-end">
-                                                    <button x-on:click="openEditModal = false" type="button"
+                                                    <button wire:click="deleteRole" x-on:click="openEditModal = false"
+                                                        type="button"
                                                         class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                        Delete
+                                                    </button>
+                                                    <button x-on:click="openEditModal = false" type="button"
+                                                        class="ml-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                                         Cancel
                                                     </button>
                                                     <button type="submit" wire:click="updateRole"
